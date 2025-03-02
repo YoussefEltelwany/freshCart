@@ -4,11 +4,10 @@ import { Iorder } from '../../shared/interfaces/iorder';
 
 
 @Component({
-  selector: 'app-allorders',
-  standalone: true,
-  imports: [],
-  templateUrl: './allorders.component.html',
-  styleUrl: './allorders.component.scss'
+    selector: 'app-allorders',
+    imports: [],
+    templateUrl: './allorders.component.html',
+    styleUrl: './allorders.component.scss'
 })
 export class AllordersComponent {
 

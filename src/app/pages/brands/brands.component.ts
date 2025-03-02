@@ -3,11 +3,10 @@ import { BrandsService } from '../../core/services/brands/brands.service';
 import { Ibrands } from '../../shared/interfaces/ibrands';
 
 @Component({
-  selector: 'app-brands',
-  standalone: true,
-  imports: [],
-  templateUrl: './brands.component.html',
-  styleUrl: './brands.component.scss'
+    selector: 'app-brands',
+    imports: [],
+    templateUrl: './brands.component.html',
+    styleUrl: './brands.component.scss'
 })
 export class BrandsComponent implements OnInit {
   private readonly brandsService=inject(BrandsService)

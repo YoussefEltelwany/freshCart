@@ -5,11 +5,10 @@ import { IData } from '../../shared/interfaces/iproduct';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CurrencyPipe } from '@angular/common';
 @Component({
-  selector: 'app-details',
-  standalone: true,
-  imports: [CarouselModule , CurrencyPipe],
-  templateUrl: './details.component.html',
-  styleUrl: './details.component.scss'
+    selector: 'app-details',
+    imports: [CarouselModule, CurrencyPipe],
+    templateUrl: './details.component.html',
+    styleUrl: './details.component.scss'
 })
 export class DetailsComponent implements OnInit {
   private readonly activatedRoute =inject(ActivatedRoute);

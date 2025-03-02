@@ -4,11 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { OrdersService } from '../../core/services/orders/orders.service';
 
 @Component({
-  selector: 'app-checkout',
-  standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
-  templateUrl: './checkout.component.html',
-  styleUrl: './checkout.component.scss'
+    selector: 'app-checkout',
+    imports: [ReactiveFormsModule, FormsModule],
+    templateUrl: './checkout.component.html',
+    styleUrl: './checkout.component.scss'
 })
 export class CheckoutComponent implements OnInit {
   private readonly formBuilder = inject(FormBuilder);

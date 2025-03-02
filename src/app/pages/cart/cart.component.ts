@@ -6,11 +6,10 @@ import { RouterLink } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
 @Component({
-  selector: 'app-cart',
-  standalone: true,
-  imports: [CurrencyPipe, RouterLink ,SweetAlert2Module],
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.scss'
+    selector: 'app-cart',
+    imports: [CurrencyPipe, RouterLink, SweetAlert2Module],
+    templateUrl: './cart.component.html',
+    styleUrl: './cart.component.scss'
 })
 export class CartComponent {
 cartDeatils:Icart={} as Icart;

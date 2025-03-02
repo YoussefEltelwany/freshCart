@@ -10,11 +10,10 @@ import { RouterLink } from '@angular/router';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CarouselModule ,SearchPipe ,FormsModule , RouterLink],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+    selector: 'app-home',
+    imports: [CarouselModule, SearchPipe, FormsModule, RouterLink],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
   private readonly prouductsService = inject(ProuductsService);

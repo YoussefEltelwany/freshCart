@@ -5,11 +5,10 @@ import { Icategories } from '../../shared/interfaces/icategories';
 
 
 @Component({
-  selector: 'app-categories',
-  standalone: true,
-  imports: [],
-  templateUrl: './categories.component.html',
-  styleUrl: './categories.component.scss'
+    selector: 'app-categories',
+    imports: [],
+    templateUrl: './categories.component.html',
+    styleUrl: './categories.component.scss'
 })
 export class CategoriesComponent implements OnInit {
   private readonly categoriesService = inject(CategoriesService);
