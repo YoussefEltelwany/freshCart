@@ -1,0 +1,147 @@
+<nav class="bg-gray-100 border-gray-200">
+  <div
+    class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto px-4 py-2"
+  >
+    <a
+      routerLink="/home"
+      class="flex items-center space-x-3 rtl:space-x-reverse"
+    >
+      <img src="/images/freshcart-logo.svg" alt="" />
+    </a>
+    <button
+      data-collapse-toggle="navbar-default"
+      (click)="isNavbarOpen = !isNavbarOpen"
+      type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+      aria-controls="navbar-default"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open main menu</span>
+      <svg
+        class="w-5 h-5"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 17 14"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15"
+        />
+      </svg>
+    </button>
+    <div
+    [ngClass]="{ 'hidden': !isNavbarOpen, 'block': isNavbarOpen }"
+      class=" items-center flex-grow w-full md:flex md:w-auto"
+      id="navbar-default"
+    >
+      @if (isLogin()) {
+      <ul
+        class="capitalize flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-0 rtl:space-x-reverse md:mt-0 md:border-0"
+      >
+        <li>
+          <a
+            routerLink="/home"
+            routerLinkActive="bg-green-500 rounded-[7px] text-white "
+            class="block py-2 px-3 text-gray-700 rounded-sm"
+            aria-current="page"
+            >Home</a
+          >
+        </li>
+
+        <li>
+          <a
+            routerLink="/products"
+            routerLinkActive="bg-green-500 rounded-[7px] text-white "
+            class="block py-2 px-3 text-gray-700 rounded-sm"
+            aria-current="page"
+            >products</a
+          >
+        </li>
+
+        <li>
+          <a
+            routerLink="/categories"
+            routerLinkActive="bg-green-500 rounded-[7px] text-white "
+            class="block py-2 px-3 text-gray-700 rounded-sm"
+            aria-current="page"
+            >categories</a
+          >
+        </li>
+
+        <li>
+          <a
+            routerLink="/brands"
+            routerLinkActive="bg-green-500 rounded-[7px] text-white "
+            class="block py-2 px-3 text-gray-700 rounded-sm"
+            aria-current="page"
+            >brands</a
+          >
+        </li>
+      </ul>
+      }
+
+      <ul
+        class="ms-auto items-center capitalize flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-0 rtl:space-x-reverse md:mt-0 md:border-0"
+      >
+        @if (!isLogin()) {
+        <li>
+          <a
+            routerLink="/login"
+            routerLinkActive="bg-green-500 rounded-[7px] text-white "
+            class="block py-2 px-3 text-gray-700 rounded-sm"
+            aria-current="page"
+            >login</a
+          >
+        </li>
+
+        <li>
+          <a
+            routerLink="/register"
+            routerLinkActive="bg-green-500 rounded-[7px] text-white "
+            class="block py-2 px-3 text-gray-700 rounded-sm"
+            aria-current="page"
+            >register
+          </a>
+        </li>
+        }@else {
+          <li>
+            <a routerLink="/wishlist" routerLinkActive="text-green-500 rounded-[7px]" class="block py-2 px-3 text-gray-700 rounded-sm relative hover:text-green-500 focus:text-green-600 transition-colors">
+              <i class="fas fa-heart text-xl"></i>
+              <!-- <span
+              class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset absolute top-0 left-[28px]"
+              >55</span
+            > -->
+            </a>
+          </li>
+        <li>
+          <a
+            routerLink="/cart"
+            routerLinkActive="text-green-500 rounded-[7px]  "
+            class="block py-2 px-3 text-gray-700 rounded-sm relative"
+            aria-current="page"
+          >
+            <i class="fas fa-cart-shopping"></i>
+            <span
+              class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset absolute top-0 left-[28px]"
+              >{{ numberOfCarts() }}</span
+            >
+          </a>
+        </li>
+        <li>
+          <a
+            (click)="logout()"
+            role="button"
+            class="block py-2 px-3 text-gray-700 rounded-sm"
+            aria-current="page"
+            >logout</a
+          >
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
