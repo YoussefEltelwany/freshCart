@@ -33,7 +33,7 @@
 
 
 <section class="py-3">
-  <h2 class="text-4xl py-2">popular categoires</h2>
+  <h2 class="text-4xl py-2  font-extrabold text-gray-800 hover:text-green-600 transition-colors duration-300">popular categoires</h2>
   <owl-carousel-o [options]="customOptions">
       @for (cat of categories(); track cat._id) {
         <ng-template carouselSlide >
@@ -48,7 +48,7 @@
 
 
 <section>
-  <h2 class="text-4xl py-2">popular products</h2>
+  <h2 class="text-4xl py-2  font-extrabold text-gray-800 hover:text-green-600 transition-colors duration-300">popular products</h2>
 
   <input [(ngModel)]="searchName" type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 mx-auto my-8 ps-10 p-2.5  " placeholder="Search brand name..." required />
   <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  gap-5">
