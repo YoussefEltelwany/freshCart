@@ -1,21 +1,16 @@
 <section
   class="w-full mx-auto bg-gray-100 shadow border p-10 rounded-lg sm:w-1/2"
 >
-  <h1 class="text-3xl font-medium text-center text-green-600 p-2">
-    Login now
-  </h1>
+  <h1 class="text-3xl font-medium text-center text-green-600 p-2">Login now</h1>
 
   <form [formGroup]="loginform" (ngSubmit)="submitForm()">
-
-
-
     <div class="relative z-0 w-full mb-5 group">
       <input
         formControlName="email"
         type="email"
         name="floating_email"
         id="floating_email"
-        class="block py-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2  appearance-none  dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-500 peer"
+        class="block py-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-500 peer"
         placeholder=" "
         required
       />
@@ -26,28 +21,34 @@
       >
 
       @if (loginform.get('email')?.errors && loginform.get('email')?.touched) {
-        <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-100  dark:text-red-400" role="alert">
-          <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-          </svg>
+      <div
+        class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-100 dark:text-red-400"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
 
-          <div>
-              <ul class="mt-1.5 list-disc list-inside">
-                @if (loginform.get('email')?.getError('required')) {
-                  <li>email is required</li>
-                }
-                @else if (loginform.get('email')?.getError('email')) {
-                  <li>email is invalid</li>
-                }
-            </ul>
-          </div>
+        <div>
+          <ul class="mt-1.5 list-disc list-inside">
+            @if (loginform.get('email')?.getError('required')) {
+            <li>email is required</li>
+            } @else if (loginform.get('email')?.getError('email')) {
+            <li>email is invalid</li>
+            }
+          </ul>
         </div>
+      </div>
       }
-
-
     </div>
-
-
 
     <div class="relative z-0 w-full mb-5 group">
       <input
@@ -55,7 +56,7 @@
         type="password"
         name="floating_password"
         id="floating_password"
-        class="block py-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2  appearance-none  dark:focus:border-gretext-green-500 focus:outline-none focus:ring-0 focus:border-green-500 peer"
+        class="block py-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:focus:border-gretext-green-500 focus:outline-none focus:ring-0 focus:border-green-500 peer"
         placeholder=" "
         required
       />
@@ -65,51 +66,68 @@
         >Password</label
       >
 
-      @if (loginform.get('password')?.errors && loginform.get('password')?.touched) {
-        <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-100  dark:text-red-400" role="alert">
-          <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-          </svg>
+      @if (loginform.get('password')?.errors &&
+      loginform.get('password')?.touched) {
+      <div
+        class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-100 dark:text-red-400"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
 
-          <div>
-              <ul class="mt-1.5 list-disc list-inside">
-                @if (loginform.get('password')?.getError('required')) {
-                  <li>password is required</li>
-                }
-                @else if (loginform.get('password')?.getError('pattern')) {
-                  <li>Password must start with an uppercase letter, be at least 8 characters long, and contain only letters, numbers, or underscores.</li>
-                }
-            </ul>
-          </div>
+        <div>
+          <ul class="mt-1.5 list-disc list-inside">
+            @if (loginform.get('password')?.getError('required')) {
+            <li>password is required</li>
+            } @else if (loginform.get('password')?.getError('pattern')) {
+            <li>
+              Password must start with an uppercase letter, be at least 8
+              characters long, and contain only letters, numbers, or
+              underscores.
+            </li>
+            }
+          </ul>
         </div>
+      </div>
       }
     </div>
 
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-2 w-full">
-      <button [disabled]="isloading"
+    <div
+      class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-2 w-full"
+    >
+      <button
+        [disabled]="isloading"
         type="submit"
-        class="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300
-               font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center
-               transition-colors duration-500">
-        Login
-        @if (isloading) {
-          <span><i class="fas fa-spin fa-spinner"></i></span>
+        class="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition-colors duration-500"
+      >
+        Login @if (isloading) {
+        <span><i class="fas fa-spin fa-spinner"></i></span>
         }
       </button>
 
       @if (messError) {
-        <p class="bg-red-400 text-white px-4 py-2 border w-full text-center rounded-md">
-          {{messError}}
-        </p>
+      <p
+        class="bg-red-400 text-white px-4 py-2 border w-full text-center rounded-md"
+      >
+        {{ messError }}
+      </p>
       }
 
-      <a routerLink="/register"
-        class="text-gray-500 hover:text-green-700 font-medium underline transition-colors duration-300 cursor-pointer">
+      <a
+        routerLink="/register"
+        class="text-gray-500 hover:text-green-700 font-medium underline transition-colors duration-300 cursor-pointer"
+      >
         Sign up now!
       </a>
     </div>
-
-
-
   </form>
 </section>
