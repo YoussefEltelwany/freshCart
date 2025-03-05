@@ -1,17 +1,17 @@
 <section class="container mx-auto p-5">
   <h2 class="text-4xl py-2 text-center font-semibold text-green-600">All Products</h2>
 
-  <!-- 🔍 مربع البحث -->
+
   <input  type="text" [(ngModel)]="searchTerm"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-1/2 mx-auto my-8 ps-10 p-2.5"
     placeholder="Search brand name..." required />
 
-  <!-- 🛍️ شبكة المنتجات -->
+
   <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
     @for (item of prouducts() |search:searchTerm(); track item._id) {
       <div class="border border-green-400/50 rounded-md overflow-hidden shadow relative">
 
-        <!-- 🔗 الانتقال إلى صفحة التفاصيل -->
+
         <div [routerLink]="['/details', item._id]">
           <div class="card-img">
             <img [src]="item.imageCover" class="w-full h-[300px] object-contain" [alt]="item.title" />
@@ -29,13 +29,13 @@
           </div>
         </div>
 
-        <!-- 🛒 زر الإضافة إلى السلة -->
+
         <div class="flex justify-around items-center">
           <button (click)="addtoCart(item.id)" class="bg-green-600 text-white py-2 px-10 border rounded-md w-3/4">Add to cart</button>
          <a (click)="addtowishlist(item._id)"><i class="fas fa-heart  text-red-500 text-xl cursor-pointer"></i></a>
          </div>
        </div>
-      
+
     }
   </div>
 
