@@ -4,6 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { CartService } from '../../core/services/cart/cart.service';
 import { CommonModule } from '@angular/common';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 
 @Component({
     selector: 'app-navbar',
@@ -21,7 +22,9 @@ export class NavbarComponent  implements OnInit {
   readonly isLogin = input<boolean>(true);
   private readonly authService = inject(AuthService);
   private readonly cartService =inject(CartService)
-  numberOfCarts:Signal<number> =computed(() => this.cartService.cartnumber() );
+  numberOfCarts:Signal<number> =computed(() => this.cartService.cartnumber());
+ 
+
   ngOnInit(): void {
     this.cartService.getCart().subscribe({
       next: (res) => {

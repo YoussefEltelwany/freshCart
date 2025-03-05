@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WishlistService {
-
+  Wishnumber:WritableSignal<number> =signal(0)
   constructor(private httpClient: HttpClient) { }
 
   addToWishlist(productId: string) {

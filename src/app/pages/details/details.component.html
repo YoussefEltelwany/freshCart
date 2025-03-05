@@ -24,6 +24,7 @@
       <p class="text-gray-600 leading-relaxed text-lg">
         {{ productDetails.description }}
       </p>
+      <h3 class="text-lg font-medium text-gray-700">{{ productDetails.category.name }}</h3>
       <p class="text-3xl font-bold text-green-700">
         {{ productDetails.price | currency : "EGP" }}
       </p>

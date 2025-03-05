@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 
 @Component({
     selector: 'app-wishlist',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
     styleUrl: './wishlist.component.scss'
 })
 export class WishlistComponent {
-
+  private readonly wishlistService =inject(WishlistService)
 }
