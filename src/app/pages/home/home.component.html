@@ -50,7 +50,7 @@
 <section>
   <h2 class="text-4xl py-2">popular products</h2>
 
-  <input [(ngModel)]="searchName" type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 mx-auto my-8 ps-10 p-2.5  " placeholder="Search brand name..." required />
+  <input [(ngModel)]="searchName" type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 mx-auto my-8 ps-10 p-2.5  " placeholder="Search brand name..." required />
   <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  gap-5">
    @for (prouduct of prouducts().slice(0,15) |search:searchName; track prouduct.id) {
     <div    class="card border border-green-400/50 rounded-md overflow-hidden shadow relative">
