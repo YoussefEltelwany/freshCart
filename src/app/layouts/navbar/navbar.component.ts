@@ -1,4 +1,3 @@
-import { log } from 'console';
 import { Component, computed, inject, input, OnInit, Signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../core/services/auth/auth.service';
@@ -21,11 +20,16 @@ export class NavbarComponent  implements OnInit {
   isNavbarOpen = false;
   readonly isLogin = input<boolean>(true);
   private readonly authService = inject(AuthService);
-  private readonly cartService =inject(CartService)
+  private readonly cartService =inject(CartService);
+  private readonly wishlistService = inject(WishlistService);
   numberOfCarts:Signal<number> =computed(() => this.cartService.cartnumber());
- 
+  numberOfWishlist:Signal<number> =computed(() => this.wishlistService.Wishnumber());
 
   ngOnInit(): void {
+    this.cartNumber();
+    this.Wishnumber();
+  }
+  cartNumber():void{
     this.cartService.getCart().subscribe({
       next: (res) => {
         console.log(res);
@@ -36,6 +40,25 @@ export class NavbarComponent  implements OnInit {
       }
     });
   }
+
+  Wishnumber():void{
+    this.wishlistService.getWishlist().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.wishlistService.Wishnumber.set(res.count)
+        
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
+
+
+
+
+
   logout(): void {
     this.authService.logout();
   }

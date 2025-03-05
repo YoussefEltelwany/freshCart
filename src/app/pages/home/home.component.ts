@@ -9,9 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
+
 @Component({
     selector: 'app-home',
-    imports: [CarouselModule, SearchPipe, FormsModule, RouterLink],
+    imports: [CarouselModule, SearchPipe, FormsModule, RouterLink ,CommonModule],
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss'
 })
@@ -19,6 +22,7 @@ export class HomeComponent implements OnInit {
   private readonly prouductsService = inject(ProuductsService);
   private readonly categoriesService = inject(CategoriesService);
   private readonly cartService = inject(CartService);
+  private readonly wishlistService = inject(WishlistService);
   private readonly toastrService = inject(ToastrService);
 
   searchName:any="";
@@ -109,6 +113,22 @@ export class HomeComponent implements OnInit {
       error: (error) => {
         console.error(error);
       },
+    });
+  }
+
+
+  addtowishlist(id:string ):void {
+    this.wishlistService.addToWishlist(id).subscribe({
+        next: (res) => {
+          console.log(res);
+          if (res.status == "success") {
+            this.toastrService.success('Product Added to Wishlist', 'Success');
+            this.wishlistService.Wishnumber.set(res.data.length )
+            console.log(res.data.length);
+          }
+        },error:(error)=>{
+          console.log(error)
+        }
     });
   }
 

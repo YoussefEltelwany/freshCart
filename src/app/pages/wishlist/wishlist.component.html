@@ -1,1 +1,39 @@
-<p>wishlist works!</p>
+<div class="container mx-auto px-6 py-8">
+  <h2 class="text-3xl font-bold text-green-700 text-center mb-8">My Wishlist</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <!-- منتج واحد (كرر هذا العنصر لكل منتج) -->
+      @for (wish of showWishlist; track wish._id) {
+        <div class="bg-white rounded-xl border border-green-400 shadow-xl overflow-hidden relative transition-all hover:shadow-2xl hover:scale-105">
+
+          <!-- زر الحذف -->
+          <button (click)="removeWishlist(wish._id)" class="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:bg-red-500 hover:text-white transition">
+            <i class="fas fa-times text-red-500 hover:text-white"></i>
+          </button>
+
+          <!-- صورة المنتج -->
+          <img [src]="wish.imageCover" alt="Product Image" class="w-full h-52 object-cover rounded-t-lg">
+
+          <div class="p-5">
+            <!-- تفاصيل المنتج -->
+            <h3 class="text-lg font-semibold text-gray-800"> {{ wish.title }}</h3>
+            <p class="text-green-600 font-medium text-sm mt-1">{{wish.price}}EGP</p>
+
+            <!-- التقييم -->
+            <div class="flex items-center mt-2">
+              <i class="fas fa-star text-yellow-400"></i>
+              <span class="text-gray-600 text-sm ml-1">{{ wish.ratingsAverage }}/5</span>
+            </div>
+
+            <!-- زر الإضافة إلى السلة -->
+            <button (click)="addtoCart(wish._id)" class="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-all">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      }
+
+
+  </div>
+
+</div>

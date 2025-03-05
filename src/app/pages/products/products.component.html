@@ -30,10 +30,12 @@
         </div>
 
         <!-- 🛒 زر الإضافة إلى السلة -->
-        <button (click)="addtoCart(item.id)"   class="bg-green-600 text-white py-2 px-10 border rounded-md w-full">
-          Add to cart
-        </button>
-      </div>
+        <div class="flex justify-around items-center">
+          <button (click)="addtoCart(item.id)" class="bg-green-600 text-white py-2 px-10 border rounded-md w-3/4">Add to cart</button>
+         <a (click)="addtowishlist(item._id)"><i class="fas fa-heart  text-red-500 text-xl cursor-pointer"></i></a>
+         </div>
+       </div>
+      
     }
   </div>
 

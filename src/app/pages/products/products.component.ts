@@ -6,6 +6,7 @@ import { Iproduct } from '../../shared/interfaces/iproduct';
 import { SearchPipe } from '../../shared/pipes/search/search.pipe';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 
 @Component({
     selector: 'app-products',
@@ -16,6 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ProductsComponent  implements OnInit {
   private readonly allproductsService=inject(AllproductsService);
   private readonly cartService = inject(CartService);
+  private readonly wishlistService = inject(WishlistService);
   private readonly toastrService = inject(ToastrService);
 
 
@@ -49,5 +51,22 @@ export class ProductsComponent  implements OnInit {
     },
   });
 }
+
+
+addtowishlist(id:string ):void {
+  this.wishlistService.addToWishlist(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        if (res.status == "success") {
+          this.toastrService.success('Product Added to Wishlist', 'Success');
+          this.wishlistService.Wishnumber.set(res.data.length )
+          console.log(res.data.length);
+        }
+      },error:(error)=>{
+        console.log(error)
+      }
+  });
+}
+
 
 }

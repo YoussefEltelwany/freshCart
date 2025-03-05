@@ -109,11 +109,13 @@
         </li>
         }@else {
           <li>
-            <a routerLink="/wishlist" routerLinkActive="text-green-500 rounded-[7px]" class="block py-2 px-3 text-gray-700 rounded-sm relative hover:text-green-500 focus:text-green-600 transition-colors">
+            <a routerLink="/wishlist"
+             routerLinkActive="text-green-500 rounded-[7px]"
+              class="block py-2 px-3 text-gray-700 rounded-sm relative hover:text-green-500 focus:text-green-600 transition-colors">
               <i class="fas fa-heart text-xl"></i>
               <span
               class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset absolute top-0 left-[28px]"
-              ></span
+              >{{ numberOfWishlist() }}</span
             >
             </a>
           </li>
