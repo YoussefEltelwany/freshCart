@@ -106,7 +106,9 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         console.log(res);
         if (res.status == "success") {
-          this.toastrService.success('Product Added Successfully', 'Success');
+          this.toastrService.success('Product Added Successfully', 'Success',{
+            verticalPosition:'bottom'
+          });
           this.cartService.cartnumber.set(res.numOfCartItems)
         }
       },
