@@ -6,17 +6,14 @@ export const logdinGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const platform = inject(PLATFORM_ID);
 
-  if((isPlatformBrowser(platform))){
-    if(localStorage.getItem('token') !== null){
+  if (isPlatformBrowser(platform)) {
+    if (localStorage.getItem('token') !== null) {
       router.navigate(['/home']);
       return false;
-    }else{
+    } else {
       return true;
-
     }
-  }else{
+  } else {
     return false;
   }
-
-
 };

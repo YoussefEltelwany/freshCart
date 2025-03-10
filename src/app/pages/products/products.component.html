@@ -1,42 +1,67 @@
 <section class="container mx-auto p-5">
-  <h2 class="text-4xl py-2 text-center font-semibold text-green-600">All Products</h2>
+  <h2 class="text-4xl py-2 text-center font-semibold text-green-600">
+    All Products
+  </h2>
 
-
-  <input  type="text" [(ngModel)]="searchTerm"
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-1/2 mx-auto my-8 ps-10 p-2.5"
-    placeholder="Search brand name..." required />
+    placeholder="Search brand name..."
+    required
+  />
 
-
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
-    @for (item of prouducts() |search:searchTerm(); track item._id) {
-      <div class="border border-green-400/50 rounded-md overflow-hidden shadow relative">
-
-
-        <div [routerLink]="['/details', item._id]">
-          <div class="card-img">
-            <img [src]="item.imageCover" class="w-full h-[300px] object-contain" [alt]="item.title" />
-          </div>
-          <div class="p-4">
-            <h4 class="text-green-500 text-xs">{{ item.category.name || 'No Category' }}</h4>
-            <h3 class="font-medium truncate">{{ item.title }}</h3>
-            <div class="flex justify-between items-center mt-2">
-              <span class="font-semibold text-lg">{{ item.price }} EGP</span>
-              <div class="flex items-center">
-                <i class="fas fa-star text-yellow-300"></i>
-                <span class="text-gray-500 ml-1">{{ item.ratingsAverage }}</span>
-              </div>
+  <div
+    class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"
+  >
+    @for (item of prouducts() |search:searchTerm() | search:text()| paginate: {
+    itemsPerPage:25 , currentPage: p() } ; track item._id ) {
+    <div
+      class="border border-green-400/50 rounded-md overflow-hidden shadow relative"
+    >
+      <div [routerLink]="['/details', item._id]">
+        <div class="card-img">
+          <img
+            [src]="item.imageCover"
+            class="w-full h-[300px] object-contain"
+            [alt]="item.title"
+          />
+        </div>
+        <div class="p-4">
+          <h4 class="text-green-500 text-xs">
+            {{ item.category.name || "No Category" }}
+          </h4>
+          <h3 class="font-medium truncate">{{ item.title }}</h3>
+          <div class="flex justify-between items-center mt-2">
+            <span class="font-semibold text-lg">{{ item.price }} EGP</span>
+            <div class="flex items-center">
+              <i class="fas fa-star text-yellow-300"></i>
+              <span class="text-gray-500 ml-1">{{ item.ratingsAverage }}</span>
             </div>
           </div>
         </div>
+      </div>
 
-
-        <div class="flex justify-around items-center">
-          <button (click)="addtoCart(item.id)" class="bg-green-600 text-white py-2 px-10 border rounded-md w-3/4">Add to cart</button>
-         <a (click)="addtowishlist(item._id)"><i class="fas fa-heart  text-red-500 text-xl cursor-pointer"></i></a>
-         </div>
-       </div>
+      <div class="flex justify-around items-center">
+        <button
+          (click)="addtoCart(item.id)"
+          class="bg-green-600 text-white py-2 px-10 border rounded-md w-3/4"
+        >
+          Add to cart
+        </button>
+        <a (click)="addtowishlist(item._id)"
+          ><i class="fas fa-heart text-red-500 text-xl cursor-pointer"></i
+        ></a>
+      </div>
+    </div>
 
     }
   </div>
 
+  <div class="flex justify-center pt-10">
+    <pagination-controls
+      class="my-pagination"
+      (pageChange)="p.set($event)"
+    ></pagination-controls>
+  </div>
 </section>

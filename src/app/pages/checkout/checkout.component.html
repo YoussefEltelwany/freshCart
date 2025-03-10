@@ -1,53 +1,74 @@
 <div class="max-w-lg mx-auto bg-white p-10 rounded-2xl shadow-2xl">
-  <h2 class="text-3xl font-extrabold text-green-600 mb-6 text-center">Checkout</h2>
+  <h2 class="text-3xl font-extrabold text-green-600 mb-6 text-center">
+    Checkout
+  </h2>
 
   <form class="space-y-5" [formGroup]="checkoutForm" (ngSubmit)="submitForm()">
-
     <div>
-      <label for="Details" class="block text-gray-700 font-medium mb-2">Address Details</label>
-      <textarea id="Details" formControlName="details"
+      <label for="Details" class="block text-gray-700 font-medium mb-2"
+        >Address Details</label
+      >
+      <textarea
+        id="Details"
+        formControlName="details"
         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 focus-visible:outline-none transition duration-200"
-        placeholder="Enter your Details"></textarea>
+        placeholder="Enter your Details"
+      ></textarea>
 
-      @if (checkoutForm.get('details')?.invalid && checkoutForm.get('details')?.touched) {
-        <div class="bg-red-50  p-3 rounded-lg">
-          <p class="text-red-600 text-sm"> Address details are required.</p>
-        </div>
+      @if (checkoutForm.get('details')?.invalid &&
+      checkoutForm.get('details')?.touched) {
+      <div class="bg-red-50 p-3 rounded-lg">
+        <p class="text-red-600 text-sm">Address details are required.</p>
+      </div>
 
       }
     </div>
 
-
     <div>
-      <label for="phone" class="block text-gray-700 font-medium mb-2">Phone</label>
-      <input type="tel" id="phone" formControlName="phone"
+      <label for="phone" class="block text-gray-700 font-medium mb-2"
+        >Phone</label
+      >
+      <input
+        type="tel"
+        id="phone"
+        formControlName="phone"
         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 focus-visible:outline-none transition duration-200"
-        placeholder="Enter your phone number" />
+        placeholder="Enter your phone number"
+      />
 
-      @if (checkoutForm.get('phone')?.invalid && checkoutForm.get('phone')?.touched) {
-         <div class="bg-red-50  p-3 rounded-lg">
-          <p class="text-red-500 text-sm ">Please enter a valid phone number.</p>
-         </div>
+      @if (checkoutForm.get('phone')?.invalid &&
+      checkoutForm.get('phone')?.touched) {
+      <div class="bg-red-50 p-3 rounded-lg">
+        <p class="text-red-500 text-sm">Please enter a valid phone number.</p>
+      </div>
       }
     </div>
 
-
     <div>
-      <label for="city" class="block text-gray-700 font-medium mb-2">City</label>
-      <input type="text" id="city" formControlName="city"
+      <label for="city" class="block text-gray-700 font-medium mb-2"
+        >City</label
+      >
+      <input
+        type="text"
+        id="city"
+        formControlName="city"
         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 focus-visible:outline-none transition duration-200"
-        placeholder="Enter your city" />
+        placeholder="Enter your city"
+      />
 
-      @if (checkoutForm.get('city')?.invalid && checkoutForm.get('city')?.touched) {
-        <div class="bg-red-50  p-3 rounded-lg">
-          <p class="text-red-500 text-sm  ">City is required.</p>
-        </div>
+      @if (checkoutForm.get('city')?.invalid &&
+      checkoutForm.get('city')?.touched) {
+      <div class="bg-red-50 p-3 rounded-lg">
+        <p class="text-red-500 text-sm">City is required.</p>
+      </div>
       }
     </div>
 
- 
-    <button type="submit" [disabled]="checkoutForm.invalid"
-      class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-lg px-5 py-3 text-center shadow-md transition duration-300 transform hover:scale-[1.03] disabled:bg-gray-400 disabled:cursor-not-allowed">
+    <button
+      type="submit"
+      [disabled]="checkoutForm.invalid"
+      class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-lg px-5 py-3 text-center shadow-md transition duration-300 transform hover:scale-[1.03] disabled:bg-gray-400 disabled:cursor-not-allowed"
+    >
       Proceed to Payment
     </button>
   </form>

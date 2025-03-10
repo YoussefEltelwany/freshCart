@@ -7,17 +7,17 @@ import { CurrencyPipe } from '@angular/common';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
 @Component({
-    selector: 'app-details',
-    imports: [CarouselModule, CurrencyPipe],
-    templateUrl: './details.component.html',
-    styleUrl: './details.component.scss'
+  selector: 'app-details',
+  imports: [CarouselModule, CurrencyPipe],
+  templateUrl: './details.component.html',
+  styleUrl: './details.component.scss',
 })
 export class DetailsComponent implements OnInit {
-  private readonly activatedRoute =inject(ActivatedRoute);
-  private readonly prouductsService =inject(ProuductsService);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly prouductsService = inject(ProuductsService);
   private readonly cartService = inject(CartService);
   private readonly toastrService = inject(ToastrService);
-  productID:any;
+  productID: any;
   productDetails: IData = {} as IData;
 
   carouselOptions: OwlOptions = {
@@ -37,44 +37,38 @@ export class DetailsComponent implements OnInit {
       },
       1000: {
         items: 1,
-      }
-    }
-  }
-
-
-
-
-
+      },
+    },
+  };
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe({
-      next:(res)=>{
-        console.log(res.get("id"));
-        this.productID=res.get("id");
+      next: (res) => {
+        console.log(res.get('id'));
+        this.productID = res.get('id');
         this.prouductsService.getSpecificProducts(this.productID).subscribe({
-          next:(res)=>{
+          next: (res) => {
             console.log(res);
-            this.productDetails=res.data;
+            this.productDetails = res.data;
           },
-          error:(err)=>{
+          error: (err) => {
             console.log(err);
-          }
-        })
+          },
+        });
       },
-      error:(err)=>{
-        console.log(err)
-      }
-    })
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
-
-  addtoCarts(id:string):void {
+  addtoCarts(id: string): void {
     this.cartService.addProductToCart(id).subscribe({
       next: (res) => {
         console.log(res);
-        if (res.status == "success") {
+        if (res.status == 'success') {
           this.toastrService.success('Product Added Successfully', 'Success');
-          this.cartService.cartnumber.set(res.numOfCartItems)
+          this.cartService.cartnumber.set(res.numOfCartItems);
         }
       },
       error: (error) => {

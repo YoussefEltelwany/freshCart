@@ -5,8 +5,10 @@ import { finalize } from 'rxjs';
 
 export const spinnerInterceptor: HttpInterceptorFn = (req, next) => {
   const ngxSpinnerService = inject(NgxSpinnerService);
-   ngxSpinnerService.show();
-  return next(req).pipe(finalize(()=>{
-       ngxSpinnerService.hide();
-  }))
+  ngxSpinnerService.show();
+  return next(req).pipe(
+    finalize(() => {
+      ngxSpinnerService.hide();
+    })
+  );
 };

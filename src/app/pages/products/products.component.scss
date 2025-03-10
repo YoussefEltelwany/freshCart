@@ -1,0 +1,33 @@
+.my-pagination ::ng-deep .ngx-pagination {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  list-style: none;
+  gap: 0.5rem;
+}
+
+.my-pagination ::ng-deep .ngx-pagination a,
+.my-pagination ::ng-deep .ngx-pagination .current {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.my-pagination ::ng-deep .ngx-pagination a {
+  background-color: #e5e7eb;
+  color: #333;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background-color: #4caf50;
+  color: white;
+  transform: scale(1.05);
+}
+
+.my-pagination ::ng-deep .ngx-pagination a:hover {
+  background-color: #6b7280;
+  color: white;
+  transform: scale(1.05);
+}

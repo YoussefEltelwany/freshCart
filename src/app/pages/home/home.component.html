@@ -1,85 +1,151 @@
 <section>
-  <div class="flex flex-col md:flex-row ">
+  <div class="flex flex-col md:flex-row">
     <div class="w-full md:w-[70%] mx-auto">
       <owl-carousel-o [options]="customMineslider">
         <ng-template carouselSlide>
-          <img class="w-full h-[200px] md:h-[300px] object-contain" src="/images/img1.avif" alt="" />
+          <img
+            class="w-full h-[200px] md:h-[300px] object-contain"
+            src="/images/img1.avif"
+            alt=""
+          />
         </ng-template>
         <ng-template carouselSlide>
-          <img class="w-full h-[200px] md:h-[300px] object-contain" src="/images/img2.avif" alt="" />
+          <img
+            class="w-full h-[200px] md:h-[300px] object-contain"
+            src="/images/img2.avif"
+            alt=""
+          />
         </ng-template>
         <ng-template carouselSlide>
-          <img class="w-full h-[200px] md:h-[300px] object-contain" src="/images/img3.avif" alt="" />
+          <img
+            class="w-full h-[200px] md:h-[300px] object-contain"
+            src="/images/img3.avif"
+            alt=""
+          />
         </ng-template>
         <ng-template carouselSlide>
-          <img class="w-full h-[200px] md:h-[300px] object-contain" src="/images/img4.avif" alt="" />
+          <img
+            class="w-full h-[200px] md:h-[300px] object-contain"
+            src="/images/img4.avif"
+            alt=""
+          />
         </ng-template>
         <ng-template carouselSlide>
-          <img class="w-full h-[200px] md:h-[300px] object-contain" src="/images/img5.avif" alt="" />
+          <img
+            class="w-full h-[200px] md:h-[300px] object-contain"
+            src="/images/img5.avif"
+            alt=""
+          />
         </ng-template>
         <ng-template carouselSlide>
-          <img class="w-full h-[200px] md:h-[300px] object-contain" src="/images/img6.avif" alt="" />
+          <img
+            class="w-full h-[200px] md:h-[300px] object-contain"
+            src="/images/img6.avif"
+            alt=""
+          />
         </ng-template>
       </owl-carousel-o>
     </div>
 
     <div class="w-full md:w-[30%] flex flex-col my-auto">
-      <img class="w-full h-[115px] object-cover rounded-lg" src="/images/grocery-banner.png" alt="" />
-      <img class="w-full h-[115px] object-cover rounded-lg" src="/images/grocery-banner-2.jpeg" alt="" />
+      <img
+        class="w-full h-[115px] object-cover rounded-lg"
+        src="/images/grocery-banner.png"
+        alt=""
+      />
+      <img
+        class="w-full h-[115px] object-cover rounded-lg"
+        src="/images/grocery-banner-2.jpeg"
+        alt=""
+      />
     </div>
   </div>
 </section>
 
-
-
 <section class="py-3">
-  <h2 class="text-4xl py-2  font-extrabold text-gray-800 hover:text-green-600 transition-colors duration-300">popular categoires</h2>
+  <h2
+    class="text-4xl py-2 font-extrabold text-gray-800 hover:text-green-600 transition-colors duration-300"
+  >
+    popular categoires
+  </h2>
   <owl-carousel-o [options]="customOptions">
-      @for (cat of categories(); track cat._id) {
-        <ng-template carouselSlide >
-          <div>
-            <img class="w-full h-[300px]" [src]="cat.image" alt="" >
-            <h3 class="text-green-600">{{cat.name}}</h3>
-          </div>
-        </ng-template>
-      }
+    @for (cat of categories(); track cat._id) {
+    <ng-template carouselSlide>
+      <div>
+        <img class="w-full h-[300px]" [src]="cat.image" alt="" />
+        <h3 class="text-green-600">{{ cat.name }}</h3>
+      </div>
+    </ng-template>
+    }
   </owl-carousel-o>
 </section>
 
-
 <section>
-  <h2 class="text-4xl py-2  font-extrabold text-gray-800 hover:text-green-600 transition-colors duration-300">popular products</h2>
+  <h2
+    class="text-4xl py-2 font-extrabold text-gray-800 hover:text-green-600 transition-colors duration-300"
+  >
+    popular products
+  </h2>
 
-  <input [(ngModel)]="searchName" type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 mx-auto my-8 ps-10 p-2.5  " placeholder="Search brand name..." required />
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  gap-5">
-   @for (prouduct of prouducts().slice(0,15) |search:searchName; track prouduct.id) {
-    <div    class="card border border-green-400/50 rounded-md overflow-hidden shadow relative">
-      <div [routerLink]="['/details' ,prouduct._id]">
-       <div class="card-img">
-         <img [src]="prouduct.imageCover" class="w-full h-[300px] object-contain" [alt]="prouduct.title" />
-       </div>
-       <div class="card-body px-2 py-4">
-         <h4 class="text-green-500 text-xs">{{prouduct.category.name}}</h4>
-         <h3 class="font-medium">{{prouduct.title.split(" ",2).join(" ")}}</h3>
-         <div class="flex justify-between items-center">
-           <span>{{prouduct.price}} EGP</span>
-           <div class="flex items-center">
-             <i class="fas fa-star text-yellow-300"></i>
-             <span class="text-gray-500">{{prouduct.ratingsAverage}}</span>
-           </div>
-         </div>
-       </div>
+  <input
+    [(ngModel)]="searchName"
+    type="text"
+    id="simple-search"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 mx-auto my-8 ps-10 p-2.5"
+    placeholder="Search brand name..."
+    required
+  />
+  <div
+    class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"
+  >
+    @for (prouduct of prouducts().slice(0,15) |search:searchName; track
+    prouduct.id) {
+    <div
+      class="card border border-green-400/50 rounded-md overflow-hidden shadow relative"
+    >
+      <div [routerLink]="['/details', prouduct._id]">
+        <div class="card-img">
+          <img
+            [src]="prouduct.imageCover"
+            class="w-full h-[300px] object-contain"
+            [alt]="prouduct.title"
+          />
+        </div>
+        <div class="card-body px-2 py-4">
+          <h4 class="text-green-500 text-xs">{{ prouduct.category.name }}</h4>
+          <h3 class="font-medium">
+            {{ prouduct.title.split(" ", 2).join(" ") }}
+          </h3>
+          <div class="flex justify-between items-center">
+            <span>{{ prouduct.price }} EGP</span>
+            <div class="flex items-center">
+              <i class="fas fa-star text-yellow-300"></i>
+              <span class="text-gray-500">{{ prouduct.ratingsAverage }}</span>
+            </div>
+          </div>
+        </div>
       </div>
-         <div class="flex justify-around items-center">
-          <button (click)="addtoCart(prouduct.id)" class="bg-green-600 text-white py-2 px-10 border rounded-md w-3/4">Add to cart</button>
-         <a (click)="addtowishlist(prouduct._id)"><i class="fas fa-heart  text-red-500 text-xl cursor-pointer"></i></a>
-         </div>
-       </div>
+      <div class="flex justify-around items-center">
+        <button
+          (click)="addtoCart(prouduct.id)"
+          class="bg-green-600 text-white py-2 px-10 border rounded-md w-3/4"
+        >
+          Add to cart
+        </button>
+        <a (click)="addtowishlist(prouduct._id)"
+          ><i class="fas fa-heart text-red-500 text-xl cursor-pointer"></i
+        ></a>
+      </div>
+    </div>
 
-   }
-
+    }
+  </div>
+  <div class="flex justify-center mt-6">
+    <button
+      [routerLink]="['/products']"
+      class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-all shadow-md hover:shadow-lg"
+    >
+      All products
+    </button>
   </div>
 </section>
-
-
-

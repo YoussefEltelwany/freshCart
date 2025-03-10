@@ -5,58 +5,54 @@ import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-    selector: 'app-wishlist',
-    imports: [],
-    templateUrl: './wishlist.component.html',
-    styleUrl: './wishlist.component.scss'
+  selector: 'app-wishlist',
+  imports: [],
+  templateUrl: './wishlist.component.html',
+  styleUrl: './wishlist.component.scss',
 })
 export class WishlistComponent implements OnInit {
-  private readonly wishlistService =inject(WishlistService);
+  private readonly wishlistService = inject(WishlistService);
   private readonly cartService = inject(CartService);
   private readonly toastrService = inject(ToastrService);
-    showWishlist:Iwish[] =[] ;
+  showWishlist: Iwish[] = [];
 
   ngOnInit(): void {
-     this.displayWishlist();
+    this.displayWishlist();
   }
 
   displayWishlist(): void {
     this.wishlistService.getWishlist().subscribe({
       next: (res) => {
         console.log(res.data);
-        this.showWishlist = res.data
+        this.showWishlist = res.data;
       },
       error: (error) => {
         console.log(error);
-      }
-    })
+      },
+    });
   }
 
-
-  removeWishlist(id:string): void{
+  removeWishlist(id: string): void {
     this.wishlistService.removeFromWishlist(id).subscribe({
       next: (res) => {
         console.log(res);
-           this.showWishlist = res.data;
-           this.wishlistService.Wishnumber.set(res.count);
-           this.wishlistService.Wishnumber.set(res.data.length  - res.data.length)
+        this.showWishlist = res.data;
+        this.wishlistService.Wishnumber.set(res.count);
+        this.wishlistService.Wishnumber.set(res.data.length - res.data.length);
       },
       error: (error) => {
         console.log(error);
-      }
-    })
+      },
+    });
   }
 
-
-
-  addtoCart(id:string):void {
+  addtoCart(id: string): void {
     this.cartService.addProductToCart(id).subscribe({
       next: (res) => {
         console.log(res);
-        if (res.status == "success") {
+        if (res.status == 'success') {
           this.toastrService.success('Product Added Successfully', 'Success');
           this.cartService.cartnumber.set(res.numOfCartItems);
-
         }
       },
       error: (error) => {
@@ -64,5 +60,4 @@ export class WishlistComponent implements OnInit {
       },
     });
   }
-
 }

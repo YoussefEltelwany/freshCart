@@ -3,44 +3,50 @@
     <h2 class="text-3xl font-extrabold mb-6 text-green-600 text-center">
       Shopping Cart
     </h2>
-   @for (product of cartDeatils.products; track product.product.id) {
+    @for (product of cartDeatils.products; track product.product.id) {
     <div class="space-y-6">
       <div
-        class="flex flex-col md:flex-row items-center justify-between border-b py-6 space-y-4  "
+        class="flex flex-col md:flex-row items-center justify-between border-b py-6 space-y-4"
       >
-       <div>
-        <img
-        [src]="product.product.imageCover"
-        [alt]="product.product.title"
-        class=" h-52 w-full object-contain  rounded-lg shadow-lg hover:shadow-xl transition duration-300"
-      />
-       </div>
+        <div>
+          <img
+            [src]="product.product.imageCover"
+            [alt]="product.product.title"
+            class="h-52 w-full object-contain rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+          />
+        </div>
         <div class="flex-1 ms-5 text-center md:text-left">
           <h3
             class="text-xl font-semibold text-gray-700 hover:text-green-600 transition duration-300"
           >
-            {{product.product.title}}
+            {{ product.product.title }}
           </h3>
           <p class="text-gray-500">
-            Price: <span class="font-bold text-green-600">{{product.price | currency: "GBP" }}</span>
+            Price:
+            <span class="font-bold text-green-600">{{
+              product.price | currency : "GBP"
+            }}</span>
           </p>
         </div>
 
         <div class="flex items-center justify-center space-x-2">
-          <button (click)="update(product.product.id , product.count -1)"
-            class=" text-green-800 text-2xl w-10 h-10 rounded-full hover:bg-gray-400 transition duration-300"
+          <button
+            (click)="update(product.product.id, product.count - 1)"
+            class="text-green-800 text-2xl w-10 h-10 rounded-full hover:bg-gray-400 transition duration-300"
           >
-             <i class="fa-regular fa-square-minus"></i>
+            <i class="fa-regular fa-square-minus"></i>
           </button>
-          <span class="font-bold text-lg">{{product.count}}</span>
-          <button (click)="update(product.product.id , product.count +1)"
-            class=" text-green-800 text-2xl w-10 h-10 rounded-full hover:bg-gray-400 transition duration-300"
+          <span class="font-bold text-lg">{{ product.count }}</span>
+          <button
+            (click)="update(product.product.id, product.count + 1)"
+            class="text-green-800 text-2xl w-10 h-10 rounded-full hover:bg-gray-400 transition duration-300"
           >
             <i class="fa-regular fa-square-plus"></i>
           </button>
         </div>
 
-        <button (click)="removeSpecificProduct(product.product.id)"
+        <button
+          (click)="removeSpecificProduct(product.product.id)"
           class="flex items-center justify-center text-red-500 hover:text-red-700 transition duration-300 space-x-1 mx-5"
         >
           <i class="fas fa-trash-alt"></i>
@@ -48,16 +54,19 @@
         </button>
       </div>
     </div>
-   }
+    }
 
     <div
       class="mt-6 flex flex-col md:flex-row justify-between items-center bg-gray-50 p-4 rounded-lg shadow-sm space-y-4 md:space-y-0"
     >
       <h3 class="text-xl font-bold text-gray-700">Total Price:</h3>
-      <p class="text-2xl font-extrabold text-green-700 ">{{cartDeatils.totalCartPrice | currency: "GBP" }}</p>
+      <p class="text-2xl font-extrabold text-green-700">
+        {{ cartDeatils.totalCartPrice | currency : "GBP" }}
+      </p>
     </div>
 
-    <button [routerLink]="['/checkout' , cartDeatils._id]"
+    <button
+      [routerLink]="['/checkout', cartDeatils._id]"
       class="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white py-3 rounded-full mt-6 shadow-lg hover:shadow-xl transition duration-300"
     >
       Checkout
