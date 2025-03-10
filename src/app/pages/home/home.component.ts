@@ -109,7 +109,9 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         console.log(res);
         if (res.status == 'success') {
-          this.toastrService.success('Product Added Successfully', 'Success');
+          this.toastrService.success('Product Added Successfully', 'Success' , {
+            positionClass: 'toast-bottom-right'
+          });
           this.cartService.cartnumber.set(res.numOfCartItems);
         }
       },
@@ -124,7 +126,9 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         console.log(res);
         if (res.status == 'success') {
-          this.toastrService.success('Product Added to Wishlist', 'Success');
+          this.toastrService.success('Product Added to Wishlist', 'Success', {
+            positionClass: 'toast-bottom-right'
+          });
           this.wishlistService.Wishnumber.set(res.data.length);
           console.log(res.data.length);
         }

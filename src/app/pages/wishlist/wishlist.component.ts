@@ -51,7 +51,11 @@ export class WishlistComponent implements OnInit {
       next: (res) => {
         console.log(res);
         if (res.status == 'success') {
-          this.toastrService.success('Product Added Successfully', 'Success');
+          this.toastrService.success('Product Added Successfully', 'Success',
+            {
+              positionClass: 'toast-bottom-right'
+            }
+          );
           this.cartService.cartnumber.set(res.numOfCartItems);
         }
       },
