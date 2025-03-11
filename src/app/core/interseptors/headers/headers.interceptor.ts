@@ -1,13 +1,15 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const headersInterceptor: HttpInterceptorFn = (req, next) => {
-  if ( localStorage.getItem('token') !== null) {
-    req = req.clone({
-      setHeaders: {
-        token: localStorage.getItem('token')!,
-      },
-    });
+  if (typeof localStorage !== 'undefined') { // Check if localStorage exists
+    const token = localStorage.getItem('token');
+    if (token) {
+      req = req.clone({
+        setHeaders: {
+          token: token
+        },
+      });
+    }
   }
-
   return next(req);
 };
