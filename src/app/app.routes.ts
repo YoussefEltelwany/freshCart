@@ -39,41 +39,50 @@ export const routes: Routes = [
         path: 'cart',
         loadComponent: () => import('./pages/cart/cart.component').then(m => m.CartComponent),
         title: 'Cart',
+        canActivate: [authGuard],
+
       },
       {
         path: 'products',
         loadComponent: () => import('./pages/products/products.component').then(m => m.ProductsComponent),
         title: 'Products',
+        canActivate: [authGuard],
       },
       {
         path: 'allorders',
         loadComponent: () => import('./pages/allorders/allorders.component').then(m => m.AllordersComponent),
         title: 'allorders',
+        canActivate: [authGuard],
       },
       {
         path: 'brands',
         loadComponent: () => import('./pages/brands/brands.component').then(m => m.BrandsComponent),
         title: 'Brands',
+        canActivate: [authGuard],
       },
       {
         path: 'categories',
         loadComponent: () => import('./pages/categories/categories.component').then(m => m.CategoriesComponent),
         title: 'Categories',
+        canActivate: [authGuard],
       },
       {
         path: 'wishlist',
         loadComponent: () => import('./pages/wishlist/wishlist.component').then(m => m.WishlistComponent),
         title: 'wishlist',
+        canActivate: [authGuard],
       },
       {
         path: 'details/:id',
         loadComponent: () => import('./pages/details/details.component').then(m => m.DetailsComponent),
         title: 'details',
+        canActivate: [authGuard],
       },
       {
         path: 'checkout/:id',
         loadComponent: () => import('./pages/checkout/checkout.component').then(m => m.CheckoutComponent),
         title: 'Checkout',
+        canActivate: [authGuard],
       },
       { path: '**', component: NotfoundComponent, title: 'Not Found' },
 
