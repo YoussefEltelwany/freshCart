@@ -17,11 +17,6 @@ export class CartService {
     return this.httpClient.post(`${environment.baseUrl}/api/v1/cart`,
       {
       "productId":id
-    },
-    {
-      headers:{
-        token: this.myToken
-      }
     }
   )};
 
