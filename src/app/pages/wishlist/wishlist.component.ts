@@ -35,10 +35,12 @@ export class WishlistComponent implements OnInit {
   removeWishlist(id: string): void {
     this.wishlistService.removeFromWishlist(id).subscribe({
       next: (res) => {
+
         console.log(res);
         this.showWishlist = res.data;
-        this.wishlistService.Wishnumber.set(res.count);
-        this.wishlistService.Wishnumber.set(res.data.length - res.data.length);
+        this.wishlistService.Wishnumber.set(res.data);
+        this.wishlistService.Wishnumber.set(res.data.length);
+        this.displayWishlist()
       },
       error: (error) => {
         console.log(error);
