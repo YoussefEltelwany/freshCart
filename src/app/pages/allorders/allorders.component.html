@@ -38,30 +38,32 @@
         <h4 class="mt-4 text-md font-semibold text-gray-800 border-b pb-2 mb-3">
           Order Items
         </h4>
-        <ul class="space-y-3">
-          @for (item of order.cartItems; track $index) {
-          <li
-            class="flex items-center gap-4 p-3 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 transition-all"
-          >
-            <img
-              [src]="item.product.imageCover"
-              alt="{{ item.product.title }}"
-              class="w-20 h-20 rounded-lg object-cover border border-gray-300"
-            />
-            <div>
-              <p class="font-semibold text-gray-900 text-base">
-                {{ item.product.title }}
-              </p>
-              <p class="text-sm text-gray-600">
-                {{ item.count }} ×
-                <span class="text-blue-600 font-semibold"
-                  >{{ item.price }} EGP</span
-                >
-              </p>
-            </div>
-          </li>
-          }
-        </ul>
+        <div class="max-h-60 overflow-y-auto">
+          <ul class="space-y-3">
+            @for (item of order.cartItems; track $index) {
+            <li
+              class="flex items-center gap-4 p-3 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 transition-all"
+            >
+              <img
+                [src]="item.product.imageCover"
+                alt="{{ item.product.title }}"
+                class="w-20 h-20 rounded-lg object-cover border border-gray-300"
+              />
+              <div>
+                <p class="font-semibold text-gray-900 text-base">
+                  {{ item.product.title }}
+                </p>
+                <p class="text-sm text-gray-600">
+                  {{ item.count }} ×
+                  <span class="text-blue-600 font-semibold"
+                    >{{ item.price }} EGP</span
+                  >
+                </p>
+              </div>
+            </li>
+            }
+          </ul>
+        </div>
       </div>
       }
     </div>
